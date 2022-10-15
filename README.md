@@ -1,0 +1,2 @@
+# SeichiAssistWorkMemo
+SeichiAssist開発メモ
