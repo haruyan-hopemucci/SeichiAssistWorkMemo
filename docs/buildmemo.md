@@ -139,7 +139,12 @@ https://gist.github.com/brianclements/841ea7bffdb01346392c#type
 
 ### パーミッション付与方法は？
 
-調査中
+```sh
+docker-compose attach [spigotのコンテナ名]
+# 実行するとプロンプトも何も出ないけどコマンド受付状態になる
+op [MCID] # この人にオペレータ権限を与える
+mv
+```
 
 ### 作成するワールド名
 
@@ -159,4 +164,9 @@ com/github/unchama/seichiassist/ManagedWorld.scala
 
 参考：
 https://wiki.craftportal.jp/view/%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E8%A7%A3%E8%AA%AC:Multiverse-Core
+
+## IDEAのコミット設定
+設定>バージョン管理>コミット
+![設定>コミット](preference-commit.png)
+コミット前のチェックを全部外しておかないとscalafmt, scalafixに沿わないスタイル修正が自動で行われてしまう。
 

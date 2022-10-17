@@ -1,0 +1,221 @@
+# 雪タイルなどが整地する場所より上にあるときの重力値の増加の撤廃 #1628
+
+## 修正対象
+
+src/main/scala/com/github/unchama/seichiassist/util/BreakUtil.scala
+
+## isSolid()の内容
+
+```java
+            case STONE:
+            case GRASS:
+            case DIRT:
+            case COBBLESTONE:
+            case WOOD:
+            case BEDROCK:
+            case SAND:
+            case GRAVEL:
+            case GOLD_ORE:
+            case IRON_ORE:
+            case COAL_ORE:
+            case LOG:
+            case LEAVES:
+            case SPONGE:
+            case GLASS:
+            case LAPIS_ORE:
+            case LAPIS_BLOCK:
+            case DISPENSER:
+            case SANDSTONE:
+            case NOTE_BLOCK:
+            case BED_BLOCK:
+            case PISTON_STICKY_BASE:
+            case PISTON_BASE:
+            case PISTON_EXTENSION:
+            case WOOL:
+            case PISTON_MOVING_PIECE:
+            case GOLD_BLOCK:
+            case IRON_BLOCK:
+            case DOUBLE_STEP:
+            case STEP:
+            case BRICK:
+            case TNT:
+            case BOOKSHELF:
+            case MOSSY_COBBLESTONE:
+            case OBSIDIAN:
+            case MOB_SPAWNER:
+            case WOOD_STAIRS:
+            case CHEST:
+            case DIAMOND_ORE:
+            case DIAMOND_BLOCK:
+            case WORKBENCH:
+            case SOIL:
+            case FURNACE:
+            case BURNING_FURNACE:
+            case SIGN_POST:
+            case WOODEN_DOOR:
+            case COBBLESTONE_STAIRS:
+            case WALL_SIGN:
+            case STONE_PLATE:
+            case IRON_DOOR_BLOCK:
+            case WOOD_PLATE:
+            case REDSTONE_ORE:
+            case GLOWING_REDSTONE_ORE:
+            case ICE:
+            case SNOW_BLOCK:
+            case CACTUS:
+            case CLAY:
+            case JUKEBOX:
+            case FENCE:
+            case PUMPKIN:
+            case NETHERRACK:
+            case SOUL_SAND:
+            case GLOWSTONE:
+            case JACK_O_LANTERN:
+            case CAKE_BLOCK:
+            case STAINED_GLASS:
+            case TRAP_DOOR:
+            case MONSTER_EGGS:
+            case SMOOTH_BRICK:
+            case HUGE_MUSHROOM_1:
+            case HUGE_MUSHROOM_2:
+            case IRON_FENCE:
+            case THIN_GLASS:
+            case MELON_BLOCK:
+            case FENCE_GATE:
+            case BRICK_STAIRS:
+            case SMOOTH_STAIRS:
+            case MYCEL:
+            case NETHER_BRICK:
+            case NETHER_FENCE:
+            case NETHER_BRICK_STAIRS:
+            case ENCHANTMENT_TABLE:
+            case BREWING_STAND:
+            case CAULDRON:
+            case ENDER_PORTAL_FRAME:
+            case ENDER_STONE:
+            case DRAGON_EGG:
+            case REDSTONE_LAMP_OFF:
+            case REDSTONE_LAMP_ON:
+            case WOOD_DOUBLE_STEP:
+            case WOOD_STEP:
+            case SANDSTONE_STAIRS:
+            case EMERALD_ORE:
+            case ENDER_CHEST:
+            case EMERALD_BLOCK:
+            case SPRUCE_WOOD_STAIRS:
+            case BIRCH_WOOD_STAIRS:
+            case JUNGLE_WOOD_STAIRS:
+            case COMMAND:
+            case BEACON:
+            case COBBLE_WALL:
+            case ANVIL:
+            case TRAPPED_CHEST:
+            case GOLD_PLATE:
+            case IRON_PLATE:
+            case DAYLIGHT_DETECTOR:
+            case REDSTONE_BLOCK:
+            case QUARTZ_ORE:
+            case HOPPER:
+            case QUARTZ_BLOCK:
+            case QUARTZ_STAIRS:
+            case DROPPER:
+            case STAINED_CLAY:
+            case HAY_BLOCK:
+            case HARD_CLAY:
+            case COAL_BLOCK:
+            case STAINED_GLASS_PANE:
+            case LEAVES_2:
+            case LOG_2:
+            case ACACIA_STAIRS:
+            case DARK_OAK_STAIRS:
+            case PACKED_ICE:
+            case RED_SANDSTONE:
+            case SLIME_BLOCK:
+            case BARRIER:
+            case IRON_TRAPDOOR:
+            case PRISMARINE:
+            case SEA_LANTERN:
+            case DOUBLE_STONE_SLAB2:
+            case RED_SANDSTONE_STAIRS:
+            case STONE_SLAB2:
+            case SPRUCE_FENCE_GATE:
+            case BIRCH_FENCE_GATE:
+            case JUNGLE_FENCE_GATE:
+            case DARK_OAK_FENCE_GATE:
+            case ACACIA_FENCE_GATE:
+            case SPRUCE_FENCE:
+            case BIRCH_FENCE:
+            case JUNGLE_FENCE:
+            case DARK_OAK_FENCE:
+            case ACACIA_FENCE:
+            case STANDING_BANNER:
+            case WALL_BANNER:
+            case DAYLIGHT_DETECTOR_INVERTED:
+            case SPRUCE_DOOR:
+            case BIRCH_DOOR:
+            case JUNGLE_DOOR:
+            case ACACIA_DOOR:
+            case DARK_OAK_DOOR:
+            case PURPUR_BLOCK:
+            case PURPUR_PILLAR:
+            case PURPUR_STAIRS:
+            case PURPUR_DOUBLE_SLAB:
+            case PURPUR_SLAB:
+            case END_BRICKS:
+            case GRASS_PATH:
+            case STRUCTURE_BLOCK:
+            case COMMAND_REPEATING:
+            case COMMAND_CHAIN:
+            case FROSTED_ICE:
+            case MAGMA:
+            case NETHER_WART_BLOCK:
+            case RED_NETHER_BRICK:
+            case BONE_BLOCK:
+            case OBSERVER:
+            case WHITE_SHULKER_BOX:
+            case ORANGE_SHULKER_BOX:
+            case MAGENTA_SHULKER_BOX:
+            case LIGHT_BLUE_SHULKER_BOX:
+            case YELLOW_SHULKER_BOX:
+            case LIME_SHULKER_BOX:
+            case PINK_SHULKER_BOX:
+            case GRAY_SHULKER_BOX:
+            case SILVER_SHULKER_BOX:
+            case CYAN_SHULKER_BOX:
+            case PURPLE_SHULKER_BOX:
+            case BLUE_SHULKER_BOX:
+            case BROWN_SHULKER_BOX:
+            case GREEN_SHULKER_BOX:
+            case RED_SHULKER_BOX:
+            case BLACK_SHULKER_BOX:
+            case WHITE_GLAZED_TERRACOTTA:
+            case ORANGE_GLAZED_TERRACOTTA:
+            case MAGENTA_GLAZED_TERRACOTTA:
+            case LIGHT_BLUE_GLAZED_TERRACOTTA:
+            case YELLOW_GLAZED_TERRACOTTA:
+            case LIME_GLAZED_TERRACOTTA:
+            case PINK_GLAZED_TERRACOTTA:
+            case GRAY_GLAZED_TERRACOTTA:
+            case SILVER_GLAZED_TERRACOTTA:
+            case CYAN_GLAZED_TERRACOTTA:
+            case PURPLE_GLAZED_TERRACOTTA:
+            case BLUE_GLAZED_TERRACOTTA:
+            case BROWN_GLAZED_TERRACOTTA:
+            case GREEN_GLAZED_TERRACOTTA:
+            case RED_GLAZED_TERRACOTTA:
+            case BLACK_GLAZED_TERRACOTTA:
+            case CONCRETE:
+            case CONCRETE_POWDER:
+```
+上記のいずれかのブロックが該当する。
+
+isSolidなブロックから除外すべきブロック一覧
+
+- BEDROCK（岩盤）
+
+non-isSolidだが重力値計算に入れるべきブロック
+
+- WATER
+- LAVA
+
+
