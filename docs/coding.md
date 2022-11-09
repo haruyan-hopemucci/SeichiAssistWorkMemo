@@ -70,3 +70,20 @@ $ git merge upstream/master
 $ git checkout 自分の修正ブランチ
 $ git merge master
 ```
+
+## Option.fold を使おう
+
+cf. https://stackoverflow.com/questions/50892403/what-is-the-difference-between-option-fold-and-option-map-getorelse
+
+`Option.fold[B](ifEmpty: => B)(f: (A) => B): B`はそのOptionがNoneの場合はifEmpty側の式を、そうでなければf側の式の結果を返す。
+これは戻り値の型が明示されているという点で`getOrElse`より安全ということらしい。
+
+同様のことが`Ether.fold`でも言える。他のクラスにも`fold`があるかも。
+
+ただ、`fold`というメソッドがどの文脈においてもこのような処理を行うという保証はないので、使用する際はちゃんとAPIリファレンス見ましょう。とのこと。
+
+## 意味が同じ型
+
+`Kleisli[F, Player, Unit]`は`TargetedEffect[Player]`と同一である。
+match式はKleisliをTargetedEffectに暗黙に変換してくれることがある。
+ただし同一の扱いではあるが型として同値というわけではないので、同じ型を要求する関数(`Option.fold`等)でKleisliとTargetedEffectを混ぜると型の不一致でコンパイルエラーとなる。要注意。
